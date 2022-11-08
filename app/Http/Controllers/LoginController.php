@@ -13,9 +13,20 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function loginproses(Request $request){
+    public function adminlogin(){
+        return view('admin.login');
+    }
+
+    public function loginadmin(Request $request){
         if (Auth::attempt($request->only('email', 'password'))) {
             return redirect('/admin');
+        }
+        return view('admin.login');
+    }
+
+public function loginproses(Request $request){
+        if (Auth::attempt($request->only('email', 'password'))) {
+            return redirect('/pembeli');
         }
         return view('login');
     }

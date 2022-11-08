@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DataUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,16 +15,30 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/login', [LoginController::class, 'login'])->name('login');
-Route::post('/loginproses', [LoginController::class, 'loginproses'])->name('loginproses');
-Route::get('/register', [LoginController::class, 'register'])->name('register');
-Route::post('/registeruser', [LoginController::class, 'registeruser'])->name('registeruser');
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', function () {
-    return view('admin.dashboard');
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/loginproses', [LoginController::class, 'loginproses'])->name('loginproses');
+Route::get('/adminlogin', [LoginController::class, 'adminlogin'])->name('adminlogin');
+Route::post('/loginadmin', [LoginController::class, 'loginadmin'])->name('loginadmin');
+Route::get('/register', [LoginController::class, 'register'])->name('register');
+Route::post('/registeruser', [LoginController::class, 'registeruser'])->name('registeruser');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+Route::group(['middleware' => ['auth', 'hakakses:admin']],function(){
+    Route::get('/admin', function () {
+        return view('admin.dashboard');
+    });
+    Route::get('/datauser', [DataUserController::class, 'datauser'])->name('datauser');
+    Route::get('/tambahuser', [DataUserController::class, 'tambahuser'])->name('tambahuser');
+    Route::post('/insertuser', [DataUserController::class, 'insertuser'])->name('insertuser');
+});
+
+Route::group(['middleware' => ['auth', 'hakakses:user']],function(){
+    Route::get('/pembeli', function () {
+        return view('layout.pembeli');
+    });
 });

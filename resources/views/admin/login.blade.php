@@ -8,9 +8,9 @@
                 <a href="/" class="h1"><b>Sisi</b>Arloji</a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Silahkan anda login.</p>
+                <p class="login-box-msg">Login Admin</p>
 
-                <form action="/loginproses" method="post">
+                <form action="/loginadmin" method="post">
                     @csrf
                     <div class="input-group mb-3">
                         <input type="email" name="email" class="form-control" placeholder="Email">
@@ -30,12 +30,12 @@
                     </div>
                     <div class="row">
                         <div class="col-8">
-                            <div class="icheck-primary">
+                            {{-- <div class="icheck-primary">
                                 <input type="checkbox" id="remember">
                                 <label for="remember">
-                                    Ingat saya
+                                    Remember Me
                                 </label>
-                            </div>
+                            </div> --}}
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
@@ -65,23 +65,22 @@
                 {{-- <p class="mb-1">
                     <a href="forgot-password.html">I forgot my password</a>
                 </p> --}}
-                <p class="mb-0">
-                    Belum punya akun?
-                    <a href="/register" class="text-center">Daftar Akun</a>
+                {{-- <p class="mb-0">
+                    <a href="/register" class="text-center">Register a new membership</a>
                 </p>
+            </div> --}}
+                <!-- /.card-body -->
             </div>
-            <!-- /.card-body -->
+            <!-- /.card -->
         </div>
-        <!-- /.card -->
-    </div>
-    <!-- /.login-box -->
+        <!-- /.login-box -->
 
-    <!-- jQuery -->
-    <script src="{{ asset('template//plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('template//plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('template/dist/js/adminlte.min.js') }}"></script>
+        <!-- jQuery -->
+        <script src="{{ asset('template//plugins/jquery/jquery.min.js') }}"></script>
+        <!-- Bootstrap 4 -->
+        <script src="{{ asset('template//plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <!-- AdminLTE App -->
+        <script src="{{ asset('template/dist/js/adminlte.min.js') }}"></script>
 </body>
 
 </html>
