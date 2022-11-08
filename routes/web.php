@@ -21,8 +21,8 @@ Route::get('/', function () {
 
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/loginproses', [LoginController::class, 'loginproses'])->name('loginproses');
-Route::get('/adminlogin', [LoginController::class, 'adminlogin'])->name('adminlogin');
-Route::post('/loginadmin', [LoginController::class, 'loginadmin'])->name('loginadmin');
+Route::get('/loginadmin', [LoginController::class, 'loginadmin'])->name('loginadmin');
+Route::post('/adminlogin', [LoginController::class, 'adminlogin'])->name('adminlogin');
 Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::post('/registeruser', [LoginController::class, 'registeruser'])->name('registeruser');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');

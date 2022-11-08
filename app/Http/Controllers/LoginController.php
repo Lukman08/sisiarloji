@@ -9,22 +9,22 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function login(){
-        return view('login');
-    }
-
-    public function adminlogin(){
+    public function loginadmin(){
         return view('admin.login');
     }
 
-    public function loginadmin(Request $request){
+    public function adminlogin(Request $request){
         if (Auth::attempt($request->only('email', 'password'))) {
             return redirect('/admin');
         }
         return view('admin.login');
     }
 
-public function loginproses(Request $request){
+    public function login(){
+        return view('login');
+    }
+    
+    public function loginproses(Request $request){
         if (Auth::attempt($request->only('email', 'password'))) {
             return redirect('/pembeli');
         }
