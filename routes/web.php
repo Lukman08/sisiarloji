@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\DataUserController;
 
 /*
@@ -35,6 +36,13 @@ Route::group(['middleware' => ['auth', 'hakakses:admin']],function(){
     Route::get('/datauser', [DataUserController::class, 'datauser'])->name('datauser');
     Route::get('/tambahuser', [DataUserController::class, 'tambahuser'])->name('tambahuser');
     Route::post('/insertuser', [DataUserController::class, 'insertuser'])->name('insertuser');
+
+    Route::get('/produk', [ProdukController::class, 'produk'])->name('produk');
+    Route::get('/tambahproduk', [ProdukController::class, 'tambahproduk'])->name('tambahproduk');
+    Route::post('/insertproduk', [ProdukController::class, 'insertproduk'])->name('insertproduk');
+    Route::get('/editproduk/{id}', [ProdukController::class, 'editproduk'])->name('editproduk');
+    Route::post('/updateproduk/{id}', [ProdukController::class, 'updateproduk'])->name('updateproduk');
+    Route::get('/deleteproduk/{id}', [ProdukController::class, 'deleteproduk'])->name('deleteproduk');
 });
 
 Route::group(['middleware' => ['auth', 'hakakses:user']],function(){
