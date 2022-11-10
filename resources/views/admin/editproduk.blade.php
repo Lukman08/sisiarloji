@@ -23,7 +23,7 @@
         <!-- Main content -->
         <section class="content">
             <div class="container">
-                <form action="{{ route('insertproduk') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('updateproduk', $data->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Nama Barang</label>
