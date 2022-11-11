@@ -25,14 +25,11 @@ Route::post('/loginproses', [LoginController::class, 'loginproses'])->name('logi
 Route::get('/loginadmin', [LoginController::class, 'loginadmin'])->name('loginadmin');
 Route::post('/adminlogin', [LoginController::class, 'adminlogin'])->name('adminlogin');
 Route::get('/register', [LoginController::class, 'register'])->name('register');
-Route::post('/registeruser', [LoginController::class, 'registeruser'])->name('registeruser');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
-Route::group(['middleware' => ['auth', 'hakakses:admin']],function(){
-    Route::get('/admin', function () {
-        return view('admin.dashboard');
-    });
+Route::group(['middleware' => ['auth', 'hakakses:admin']],function(){  
+    Route::get('/admin', [LoginController::class, 'admin'])->name('admin');
     Route::get('/datauser', [DataUserController::class, 'datauser'])->name('datauser');
     Route::get('/tambahuser', [DataUserController::class, 'tambahuser'])->name('tambahuser');
     Route::post('/insertuser', [DataUserController::class, 'insertuser'])->name('insertuser');

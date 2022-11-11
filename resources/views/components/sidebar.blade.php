@@ -40,55 +40,34 @@
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
-                <li class="nav-item menu-open">
-                    <a href="/admin" class="nav-link active">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-speedometer2" viewBox="0 0 16 16">
-                            <path
-                                d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z" />
-                            <path fill-rule="evenodd"
-                                d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z" />
-                        </svg>
-                        <p>Dashboard</p>
+                <li class="nav-item">
+                    <a href="/admin" class="nav-link {{ request()->is('admin') ? ' active' : '' }}">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <p> Dashboard</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/datauser" class="nav-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-people-fill" viewBox="0 0 16 16">
-                            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                            <path fill-rule="evenodd"
-                                d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
-                            <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
-                        </svg>
-                        <p>
-                            Data User
-                        </p>
+                    <a href="/datauser" class="nav-link {{ request()->is('datauser') ? ' active' : '' }}">
+                        <i class="fas fa-users"></i>
+                        <p> Data User</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/produk" class="nav-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-box" viewBox="0 0 16 16">
-                            <path
-                                d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
-                        </svg>
-                        <p>
-                            Data Produk
-                        </p>
+                    <a href="/produk" class="nav-link {{ request()->is('produk') ? ' active' : '' }}">
+                        <i class="fas fa-box-open"></i>
+                        <p> Data Produk</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link {{ request()->is('transaksi') ? ' active' : '' }}">
+                        <i class="fa fa-shopping-cart"></i>
+                        <p> Transaksi</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="/logout" class="nav-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-power" viewBox="0 0 16 16">
-                            <path d="M7.5 1v7h1V1h-1z" />
-                            <path
-                                d="M3 8.812a4.999 4.999 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812z" />
-                        </svg>
-                        <p>
-                            Logout
-                        </p>
+                        <i class="fas fa-power-off"></i>
+                        <p> Logout</p>
                     </a>
                 </li>
 

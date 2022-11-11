@@ -1,13 +1,13 @@
-@extends('components.head')
+@extends('components.head.head')
 
 <body class="hold-transition register-page">
     <div class="register-box">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="{{ asset('template/index2.html') }}" class="h1"><b>Admin</b>LTE</a>
+                <a href="/" class="h1"><b>Sisi</b>Arloji</a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Register a new membership</p>
+                <p class="login-box-msg">Register akun baru</p>
 
                 <form action="/registeruser" method="post">
                     @csrf
@@ -48,7 +48,7 @@
                             <div class="icheck-primary">
                                 <input type="checkbox" id="agreeTerms" name="terms" value="agree">
                                 <label for="agreeTerms">
-                                    I agree to the <a href="#">terms</a>
+                                    Saya setuju</a>
                                 </label>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                     </a>
                 </div> --}}
 
-                <a href="/login" class="text-center">I already have a membership</a>
+                <a href="/login" class="text-center">Saya sudah punya akun</a>
             </div>
             <!-- /.form-box -->
         </div><!-- /.card -->

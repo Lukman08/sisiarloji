@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Produk;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,5 +50,11 @@ class LoginController extends Controller
     public function logout() {
         Auth::logout();
         return redirect('/');
+    }
+
+    public function admin(){
+        $datauser = User::count();
+        $produk = Produk::count();
+        return view('admin.dashboard', compact('datauser', 'produk'));
     }
 }

@@ -1,4 +1,4 @@
-@extends('components.head')
+@extends('components.head.head')
 
 <body>
     @extends('components.navbar')
