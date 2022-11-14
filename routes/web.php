@@ -16,9 +16,7 @@ use App\Http\Controllers\DataUserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LoginController::class, 'index'])->name('index');
 
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/loginproses', [LoginController::class, 'loginproses'])->name('loginproses');
@@ -43,7 +41,5 @@ Route::group(['middleware' => ['auth', 'hakakses:admin']],function(){
 });
 
 Route::group(['middleware' => ['auth', 'hakakses:user']],function(){
-    Route::get('/pembeli', function () {
-        return view('layout.pembeli');
-    });
+    Route::get('/pembeli', [ProdukController::class, 'userproduk'])->name('pembeli');
 });

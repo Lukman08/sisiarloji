@@ -48,4 +48,9 @@ class ProdukController extends Controller
         $data = Produk::find($id)->delete();
         return redirect()->route('produk')->with('delete', 'Informasi berhasil dihapus.');
     }
+
+    public function userproduk(){
+        $data = Produk::all();
+        return view('pembeli/dashboard', compact('data'));
+    }
 }

@@ -57,4 +57,9 @@ class LoginController extends Controller
         $produk = Produk::count();
         return view('admin.dashboard', compact('datauser', 'produk'));
     }
+
+    public function index(){
+        $data = Produk::all();
+        return view('welcome', compact('data'));
+    }
 }
