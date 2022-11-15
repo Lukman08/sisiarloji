@@ -16,7 +16,7 @@ class LoginController extends Controller
 
     public function adminlogin(Request $request){
         if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect('/admin');
+            return redirect()->route('admin');
         }
         return view('admin.login');
     }
@@ -27,7 +27,7 @@ class LoginController extends Controller
     
     public function loginproses(Request $request){
         if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect('/pembeli');
+            return redirect()->route('pembeli');
         }
         return view('login');
     }

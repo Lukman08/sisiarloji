@@ -17,7 +17,6 @@ use App\Http\Controllers\DataUserController;
 */
 
 Route::get('/', [LoginController::class, 'index'])->name('index');
-
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/loginproses', [LoginController::class, 'loginproses'])->name('loginproses');
 Route::get('/loginadmin', [LoginController::class, 'loginadmin'])->name('loginadmin');
@@ -26,8 +25,8 @@ Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
-Route::group(['middleware' => ['auth', 'hakakses:admin']],function(){  
-    Route::get('/admin', [LoginController::class, 'admin'])->name('admin');
+Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'hakakses:admin']],function(){  
+    Route::get('/dashboard', [LoginController::class, 'admin'])->name('admin');
     Route::get('/datauser', [DataUserController::class, 'datauser'])->name('datauser');
     Route::get('/tambahuser', [DataUserController::class, 'tambahuser'])->name('tambahuser');
     Route::post('/insertuser', [DataUserController::class, 'insertuser'])->name('insertuser');
@@ -40,6 +39,6 @@ Route::group(['middleware' => ['auth', 'hakakses:admin']],function(){
     Route::get('/deleteproduk/{id}', [ProdukController::class, 'deleteproduk'])->name('deleteproduk');
 });
 
-Route::group(['middleware' => ['auth', 'hakakses:user']],function(){
-    Route::get('/pembeli', [ProdukController::class, 'userproduk'])->name('pembeli');
+Route::group(['prefix'=>'pembeli', 'middleware' => ['auth', 'hakakses:user']],function(){
+    Route::get('/dashboard', [ProdukController::class, 'userproduk'])->name('pembeli');
 });
