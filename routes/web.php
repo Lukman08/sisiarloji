@@ -40,5 +40,7 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'hakakses:admin']],fun
 });
 
 Route::group(['prefix'=>'pembeli', 'middleware' => ['auth', 'hakakses:user']],function(){
-    Route::get('/dashboard', [ProdukController::class, 'userproduk'])->name('pembeli');
+    Route::get('/dashboard', [LoginController::class, 'pembeli'])->name('pembeli');
+    Route::get('/belanja', [ProdukController::class, 'belanja'])->name('belanja');
+    Route::get('/detailbelanja/{id}', [ProdukController::class, 'detailbelanja'])->name('detailbelanja');
 });

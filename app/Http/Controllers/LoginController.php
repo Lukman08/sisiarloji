@@ -58,8 +58,12 @@ class LoginController extends Controller
         return view('admin.dashboard', compact('datauser', 'produk'));
     }
 
+    public function  pembeli(){
+        return view('pembeli.dashboard');
+    }
+
     public function index(){
-        $data = Produk::all();
+        $data = Produk::orderBy('id', 'DESC')->simplePaginate(4);
         return view('welcome', compact('data'));
     }
 }
