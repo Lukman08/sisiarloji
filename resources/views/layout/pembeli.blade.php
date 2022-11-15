@@ -94,13 +94,12 @@
                         <div class="d-flex flex-column justify-content-start">
                             <a class="text-dark mb-2" href="{{ route('pembeli') }}"><i
                                     class="fa fa-angle-right mr-2"></i>Home</a>
-                            <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Our
+                            <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our
                                 Shop</a>
-                            <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping
+                            <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shopping
                                 Cart</a>
-                            <a class="text-dark mb-2" href="checkout.html"><i
-                                    class="fa fa-angle-right mr-2"></i>Checkout</a>
-                            <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact
+                            <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                            <a class="text-dark" href="#"><i class="fa fa-angle-right mr-2"></i>Contact
                                 Us</a>
                         </div>
                     </div>
@@ -125,7 +124,7 @@
                 </p> --}}
             </div>
             <div class="col-md-6 px-xl-0 text-center text-md-right">
-                <img class="img-fluid" src="{{ asset('template/img/payments.png') }}" alt="">
+                <img class="img-fluid" src="{{ asset('gambar/payments.png') }}" alt="">
             </div>
         </div>
     </div>

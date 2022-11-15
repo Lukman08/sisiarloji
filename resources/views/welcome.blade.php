@@ -133,7 +133,7 @@
                 <div id="header-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active" style="height: 410px;">
-                            <img class="img-fluid" src="{{ asset('slide/tiga.png') }}" alt="Image">
+                            <img class="img-fluid" src="{{ asset('gambar/slide/tiga.png') }}" alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
                                     <h4 class="text-light text-uppercase font-weight-medium mb-3">Buruan pesan
@@ -145,7 +145,7 @@
                             </div>
                         </div>
                         <div class="carousel-item" style="height: 410px;">
-                            <img class="img-fluid" src="{{ asset('slide/dua.png') }}" alt="Image">
+                            <img class="img-fluid" src="{{ asset('gambar/slide/dua.png') }}" alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
                                     <h4 class="text-light text-uppercase font-weight-medium mb-3">Buruan pesan
@@ -306,7 +306,7 @@
                     <div class="card product-item border-0 mb-4">
                         <div
                             class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="{{ asset('gambarproduk/' . $row->gambar) }}"
+                            <img class="img-fluid w-100" src="{{ asset('gambar/produk/' . $row->gambar) }}"
                                 alt="">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
@@ -375,13 +375,13 @@
                         <div class="d-flex flex-column justify-content-start">
                             <a class="text-dark mb-2" href="{{ route('index') }}"><i
                                     class="fa fa-angle-right mr-2"></i>Home</a>
-                            <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Our
+                            <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our
                                 Shop</a>
-                            <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping
+                            <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shopping
                                 Cart</a>
-                            <a class="text-dark mb-2" href="checkout.html"><i
+                            <a class="text-dark mb-2" href="#"><i
                                     class="fa fa-angle-right mr-2"></i>Checkout</a>
-                            <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact
+                            <a class="text-dark" href="#"><i class="fa fa-angle-right mr-2"></i>Contact
                                 Us</a>
                         </div>
                     </div>
@@ -406,7 +406,7 @@
                 </p> --}}
             </div>
             <div class="col-md-6 px-xl-0 text-center text-md-right">
-                <img class="img-fluid" src="{{ asset('template/img/payments.png') }}" alt="">
+                <img class="img-fluid" src="{{ asset('gambar/payments.png') }}" alt="">
             </div>
         </div>
     </div>

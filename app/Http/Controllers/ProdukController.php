@@ -21,7 +21,7 @@ class ProdukController extends Controller
     {
     $data = Produk::create($request->all());
     if($request->hasFile('gambar')){
-        $request->file('gambar')->move('gambarproduk/', $request->file('gambar')->getClientOriginalName());
+        $request->file('gambar')->move('gambar/produk/', $request->file('gambar')->getClientOriginalName());
         $data->gambar = $request->file('gambar')->getClientOriginalName();
         $data->save();
     }
@@ -37,7 +37,7 @@ class ProdukController extends Controller
         $data = Produk::find($id);
         $data->update($request->all());
         if($request->hasFile('gambar')){
-            $request->file('gambar')->move('gambarproduk/', $request->file('gambar')->getClientOriginalName());
+            $request->file('gambar')->move('gambar/produk/', $request->file('gambar')->getClientOriginalName());
             $data->gambar = $request->file('gambar')->getClientOriginalName();
             $data->save();
         }

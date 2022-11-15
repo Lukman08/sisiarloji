@@ -50,7 +50,7 @@
                             <th scope="row">{{ $nom++ }}</th>
                             <td>{{ $row->nama_barang }}</td>
                             <td>
-                                <img src="{{ asset('gambarproduk/' . $row->gambar) }}" alt="" style="width:50px">
+                                <img src="{{ asset('gambar/produk/' . $row->gambar) }}" alt="" style="width:50px">
                             </td>
                             <td>{{ $row->harga }}</td>
                             <td>{{ $row->stok }}</td>
