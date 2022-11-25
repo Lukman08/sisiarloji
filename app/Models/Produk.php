@@ -10,4 +10,8 @@ class Produk extends Model
     use HasFactory;
     protected $table = 'produks';
     protected $guarded = [];
+
+    public function pesanan_detail(){
+        return $this->hasMany('App\PesananDetail', 'produk_id', 'id');
+    }
 }
