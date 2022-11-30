@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produk;
+use App\Models\Pesanan;
 use Illuminate\Http\Request;
+use App\Models\PesananDetail;
 
 class ProdukController extends Controller
 {
@@ -57,5 +59,61 @@ class ProdukController extends Controller
     public function detailbelanja($id){
         $data = Produk::find($id);
         return view('pembeli/detail', compact('data'));
+    }
+
+    public function pesan(Request $request, $id){
+        $data = Produk::find($id);
+        
+        $tanggal = Carbon::now();
+
+        //validasi apakah melebihi stok
+        if($request->jumlah_pesan > $data->stok)
+        {
+            return redirect()->route('belanja');
+        }
+
+        //cek validasi
+        $cek_pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
+        //simpan ke database pesanan
+        if(empty($cek_pesanan))
+        {
+            $pesanan = new Pesanan;
+            $pesanan->user_id = Auth::user()->id;
+            $pesanan->tanggal = $tanggal;
+            $pesanan->status = 0;
+            $pesanan->jumlah_harga = 0;
+            $pesanan->kode = mt_rand(100, 999);
+            $pesanan->save();
+        }
+
+        //simpan ke database pesanan detail
+        $pesanan_baru = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
+
+        //cek pesanan detail
+        $cek_pesanan_detail = PesananDetail::where('produk_id', $data->id)->where('status', 0)->first();
+        if(empty($cek_pesanan))
+        {
+            $pesanan_detail =new PesananDetail;
+            $pesanan_detail->produk_id = $data->id;
+            $pesanan_detail->pesanan_id = $pesanan_baru->id;
+            $pesanan_detail->jumlah = $request->jumlah_pesan;
+            $pesanan_detail->jumlah_harga = $data->harga*$request->jumlah_pesan;
+            $pesanan_detail->save();
+        } else{
+            $pesanan_detail = PesananDetail::where('produk_id', $data->id)->where('pesanan_id', $pesanan_baru->id)->first();
+            $pesanan_detail->jumlah = $request_detail->jumlah+$request->jumlah_pesan;
+
+            //harga sekarang
+            $pesanan_detail->jumlah_harga = $data->harga*$request->jumlah_pesan;
+            $pesanan_detail->jumlah_harga = $pesanan_detail->jumlah_harga + $harga_pesanan_detail_baru;
+            $pesanan_detail->update();
+        }
+
+        //jumlah total
+        $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
+        $pesanan->jumlah_harga = $pesanan->jumlah_harga+$data->harga*$request->jumlah_pesan;
+        $pesanan->update();
+        
+        return redirect()->route('belanja');
     }
 }

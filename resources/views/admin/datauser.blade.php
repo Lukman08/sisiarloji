@@ -23,7 +23,7 @@
         <!-- Main content -->
         <section class="content">
             <div class="container">
-                <a class="btn btn-outline-success" href="/tambahuser" role="button"><svg xmlns="http://www.w3.org/2000/svg"
+                <a class="btn btn-outline-success" href="{{ route('tambahuser') }}" role="button"><svg xmlns="http://www.w3.org/2000/svg"
                         width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                         <path
@@ -35,7 +35,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Role</th>
+                            <th scope="col">Bergabung Pada</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -47,8 +47,18 @@
                             <th scope="row">{{ $nom++ }}</th>
                             <td>{{ $row->name }}</td>
                             <td>{{ $row->email }}</td>
-                            <td>{{ $row->role }}</td>
-                            <td> <a href="/deleteuser/{{ $row->id }}" class="btn btn-danger">Hapus</a>
+                            <td>{{ $row->created_at->diffForHumans()}}</td>
+                            <td>
+                                <div class="btn-group dropleft">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                        aria-expanded="false">
+                                        Menu
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{{ route('resetpassword', $row->id) }}">Reset Password</a>
+                                        <a class="dropdown-item" href="{{ route('deleteuser', $row->id) }}">Hapus</a>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class DataUserController extends Controller
 {
     public function datauser(){
-        $data = User::all();
+        $data = User::where('role', 'user')->get();
         return view('admin/datauser', compact('data'));
     }
 
@@ -30,5 +30,12 @@ class DataUserController extends Controller
         $data = User::find($id);
         $data->delete();
         return redirect()->route('datauser')->with('success', 'berhasil dihapus');
+    }
+
+    public function resetpassword($id){
+        $data = User::find($id)->update([
+            'password' => bcrypt('password')
+        ]);
+        return redirect()->route('datauser')->with('acc', 'berhasil direset.');
     }
 }

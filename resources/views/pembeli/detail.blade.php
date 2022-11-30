@@ -88,7 +88,8 @@
                         </div>
                     </form> --}}
                 </div>
-                <form action="" method="post">
+                <form action="{{ url('pesan', $data->id) }}" method="post">
+                    @csrf
                     <div class="d-flex align-items-center mb-4 pt-2">
                         <div class="input-group quantity mr-3" style="width: 130px;">
                             {{-- <div class="input-group-btn">
@@ -96,16 +97,14 @@
                                     <i class="fa fa-minus"></i>
                                 </button>
                             </div> --}}
-                            <input type="text" class="form-control bg-secondary text-center" value="1">
+                            <input type="number" name="jumlah_pesan" class="form-control bg-secondary text-center" min="1" value="1" required>
                             {{-- <div class="input-group-btn">
                                 <button class="btn btn-primary btn-plus">
                                     <i class="fa fa-plus"></i>
                                 </button>
                             </div> --}}
                         </div>
-                        <button type="submit" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add
-                            To
-                            Cart</button>
+                        <button type="submit" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Tambah ke keranjang</button>
                     </div>
                 </form>
                 <div class="d-flex pt-2">

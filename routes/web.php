@@ -30,6 +30,8 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'hakakses:admin']],fun
     Route::get('/datauser', [DataUserController::class, 'datauser'])->name('datauser');
     Route::get('/tambahuser', [DataUserController::class, 'tambahuser'])->name('tambahuser');
     Route::post('/insertuser', [DataUserController::class, 'insertuser'])->name('insertuser');
+    Route::get('/deleteuser/{id}', [DataUserController::class, 'deleteuser'])->name('deleteuser');
+    Route::get('/resetpassword/{id}', [DataUserController::class, 'resetpassword'])->name('resetpassword');
 
     Route::get('/produk', [ProdukController::class, 'produk'])->name('produk');
     Route::get('/tambahproduk', [ProdukController::class, 'tambahproduk'])->name('tambahproduk');
@@ -43,4 +45,5 @@ Route::group(['prefix'=>'pembeli', 'middleware' => ['auth', 'hakakses:user']],fu
     Route::get('/dashboard', [LoginController::class, 'pembeli'])->name('pembeli');
     Route::get('/belanja', [ProdukController::class, 'belanja'])->name('belanja');
     Route::get('/detailbelanja/{id}', [ProdukController::class, 'detailbelanja'])->name('detailbelanja');
+    Route::post('/pesan/{id}', [ProdukController::class, 'pesan'])->name('pesan');
 });
