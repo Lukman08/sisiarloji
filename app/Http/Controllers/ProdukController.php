@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Produk;
 use App\Models\Pesanan;
 use Illuminate\Http\Request;
 use App\Models\PesananDetail;
+use Illuminate\Support\Facades\Auth;
 
 class ProdukController extends Controller
 {
@@ -62,8 +64,7 @@ class ProdukController extends Controller
     }
 
     public function pesan(Request $request, $id){
-        $data = Produk::find($id);
-        
+        $data = Produk::where('id', $id)->first();
         $tanggal = Carbon::now();
 
         //validasi apakah melebihi stok
@@ -90,7 +91,7 @@ class ProdukController extends Controller
         $pesanan_baru = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
 
         //cek pesanan detail
-        $cek_pesanan_detail = PesananDetail::where('produk_id', $data->id)->where('status', 0)->first();
+        $cek_pesanan_detail = PesananDetail::where('produk_id', $data->id)->where('pesanan_id', $pesanan_baru->id)->first();
         if(empty($cek_pesanan))
         {
             $pesanan_detail =new PesananDetail;
@@ -101,10 +102,10 @@ class ProdukController extends Controller
             $pesanan_detail->save();
         } else{
             $pesanan_detail = PesananDetail::where('produk_id', $data->id)->where('pesanan_id', $pesanan_baru->id)->first();
-            $pesanan_detail->jumlah = $request_detail->jumlah+$request->jumlah_pesan;
+            $pesanan_detail->jumlah = $pesanan_detail->jumlah+$request->jumlah_pesan;
 
             //harga sekarang
-            $pesanan_detail->jumlah_harga = $data->harga*$request->jumlah_pesan;
+            $harga_pesanan_detail_baru = $data->harga*$request->jumlah_pesan;
             $pesanan_detail->jumlah_harga = $pesanan_detail->jumlah_harga + $harga_pesanan_detail_baru;
             $pesanan_detail->update();
         }

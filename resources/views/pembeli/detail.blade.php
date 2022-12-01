@@ -88,7 +88,7 @@
                         </div>
                     </form> --}}
                 </div>
-                <form action="{{ url('pesan', $data->id) }}" method="post">
+                <form action="{{ url('pembeli/pesan', $data->id) }}" method="post">
                     @csrf
                     <div class="d-flex align-items-center mb-4 pt-2">
                         <div class="input-group quantity mr-3" style="width: 130px;">
@@ -97,14 +97,16 @@
                                     <i class="fa fa-minus"></i>
                                 </button>
                             </div> --}}
-                            <input type="number" name="jumlah_pesan" class="form-control bg-secondary text-center" min="1" value="1" required>
+                            <input type="number" name="jumlah_pesan" class="form-control bg-secondary text-center"
+                                min="1" value="1" required>
                             {{-- <div class="input-group-btn">
                                 <button class="btn btn-primary btn-plus">
                                     <i class="fa fa-plus"></i>
                                 </button>
                             </div> --}}
                         </div>
-                        <button type="submit" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Tambah ke keranjang</button>
+                        <button type="submit" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Tambah
+                            ke keranjang</button>
                     </div>
                 </form>
                 <div class="d-flex pt-2">
