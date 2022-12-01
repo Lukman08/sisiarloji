@@ -9,7 +9,7 @@
             <div class="card-body">
                 <p class="login-box-msg">Register akun baru</p>
 
-                <form action="{{ route('userregister') }}" method="post">
+                <form action="{{ route('registeruser') }}" method="post">
                     @csrf
                     <div class="input-group mb-3">
                         <input type="text" name="name" class="form-control" placeholder="Full name">
