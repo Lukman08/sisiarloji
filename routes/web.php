@@ -47,4 +47,5 @@ Route::group(['prefix'=>'pembeli', 'middleware' => ['auth', 'hakakses:user']],fu
     Route::get('/belanja', [ProdukController::class, 'belanja'])->name('belanja');
     Route::get('/detailbelanja/{id}', [ProdukController::class, 'detailbelanja'])->name('detailbelanja');
     Route::post('/pesan/{id}', [ProdukController::class, 'pesan'])->name('pesan');
+    Route::get('/checkout', [ProdukController::class, 'checkout'])->name('checkout');
 });

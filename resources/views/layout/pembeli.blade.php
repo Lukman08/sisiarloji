@@ -97,7 +97,7 @@
                             <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Belanja</a>
                             <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shopping
                                 Cart</a>
-                            <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                            <a class="text-dark mb-2" href=""><i class="fa fa-angle-right mr-2"></i>Checkout</a>
                             <a class="text-dark" href="#"><i class="fa fa-angle-right mr-2"></i>Contact
                                 Us</a>
                         </div>

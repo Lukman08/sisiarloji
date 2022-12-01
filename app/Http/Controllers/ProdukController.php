@@ -117,4 +117,16 @@ class ProdukController extends Controller
         
         return redirect()->route('belanja');
     }
+
+    public function checkout()
+    {
+        $data = Produk::all();
+        $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
+        if(!empty($pesanan))
+        {
+            $pesanan_details = PesananDetail::where('pesanan_id', $pesanan->id)->get();
+        }
+
+        return view('pembeli/checkout', compact('pesanan', 'pesanan_details'));
+    }
 }
