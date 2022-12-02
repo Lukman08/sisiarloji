@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
             'keterangan' => 'Lensa sudah antiradiasi',
         ]);
         Produk::create([
-            'nama_barang' => 'Jam Tangan',
+            'nama_barang' => 'Jam Tangan Anak',
             'gambar' => 'jam tangan anak.png',
             'harga' => 150000,
             'stok' => 50,

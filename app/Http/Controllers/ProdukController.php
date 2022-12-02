@@ -78,7 +78,7 @@ class ProdukController extends Controller
         //simpan ke database pesanan
         if(empty($cek_pesanan))
         {
-            $pesanan = new Pesanan;
+            $pesanan = new Pesanan();
             $pesanan->user_id = Auth::user()->id;
             $pesanan->tanggal = $tanggal;
             $pesanan->status = 0;
@@ -92,9 +92,9 @@ class ProdukController extends Controller
 
         //cek pesanan detail
         $cek_pesanan_detail = PesananDetail::where('produk_id', $data->id)->where('pesanan_id', $pesanan_baru->id)->first();
-        if(empty($cek_pesanan))
+        if(empty($cek_pesanan_detail))
         {
-            $pesanan_detail =new PesananDetail;
+            $pesanan_detail = new PesananDetail();
             $pesanan_detail->produk_id = $data->id;
             $pesanan_detail->pesanan_id = $pesanan_baru->id;
             $pesanan_detail->jumlah = $request->jumlah_pesan;
