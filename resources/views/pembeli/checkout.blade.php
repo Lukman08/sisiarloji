@@ -38,9 +38,9 @@
                         @foreach($pesanan_details as $pesanan_detail)
                         <tr>
                             <td>{{ $no++ }}</td>
-                            <td>{{ $pesanan_detail->data->nama_barang }}</td>
+                            <td>{{ $pesanan_detail->produk->nama_barang }}</td>
                             <td>{{ $pesanan_detail->jumlah}}</td>
-                            <td align="left">Rp. {{ number_format($pesanan_detail->data->harga) }}</td>
+                            <td align="left">Rp. {{ number_format($pesanan_detail->produk->harga) }}</td>
                             <td>Rp. {{ number_format($pesanan_detail->jumlah_harga) }}</td>
                             <td>
                                 <form action="{{ url('checkout') }}/{( $pesanan_detail->id )}" method="post">

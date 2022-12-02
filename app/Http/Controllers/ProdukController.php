@@ -120,7 +120,6 @@ class ProdukController extends Controller
 
     public function checkout()
     {
-        $data = Produk::all();
         $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
         if(!empty($pesanan))
         {

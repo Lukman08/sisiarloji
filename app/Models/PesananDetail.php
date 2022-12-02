@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class PesananDetail extends Model
 {
     public function produk(){
-        return $this->belongsTo('App\Models\Produk', 'produk_id', 'id');
+        return $this->belongsTo(Produk::class, 'produk_id', 'id');
     }
 
     public function pesanan(){
-        return $this->hasMany('App\Pesanan', 'pesanan_id', 'id');
+        return $this->hasMany(Pesanan::class, 'pesanan_id', 'id');
     }
 }
