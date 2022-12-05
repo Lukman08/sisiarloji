@@ -105,8 +105,7 @@
                                 </button>
                             </div> --}}
                         </div>
-                        <button type="submit" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Tambah
-                            ke keranjang</button>
+                        <button type="submit" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>keranjang</button>
                     </div>
                 </form>
                 <div class="d-flex pt-2">

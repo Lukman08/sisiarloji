@@ -81,6 +81,17 @@
                 <div id="header-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active" style="height: 410px;">
+                            <img class="img-fluid" src="{{ asset('gambar/slide/dua.png') }}" alt="Image">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <div class="p-3" style="max-width: 700px;">
+                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">Buruan pesan
+                                        sekarang!</h4>
+                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Jam Tangan Trendy</h3>
+                                    <a href="" class="btn btn-light py-2 px-3">Beli</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item" style="height: 410px;">
                             <img class="img-fluid" src="{{ asset('gambar/slide/tiga.png') }}" alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
@@ -88,17 +99,6 @@
                                         sekarang!</h4>
                                     <h3 class="display-4 text-white font-weight-semi-bold mb-4">Kacamata Trendy
                                     </h3>
-                                    <a href="" class="btn btn-light py-2 px-3">Beli</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item" style="height: 410px;">
-                            <img class="img-fluid" src="{{ asset('gambar/slide/dua.png') }}" alt="Image">
-                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                <div class="p-3" style="max-width: 700px;">
-                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">Buruan pesan
-                                        sekarang!</h4>
-                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Jam Tangan Trendy</h3>
                                     <a href="" class="btn btn-light py-2 px-3">Beli</a>
                                 </div>
                             </div>

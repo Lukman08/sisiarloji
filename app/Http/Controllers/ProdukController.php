@@ -124,8 +124,25 @@ class ProdukController extends Controller
         if(!empty($pesanan))
         {
             $pesanan_details = PesananDetail::where('pesanan_id', $pesanan->id)->get();
+            return view('pembeli/checkout', compact('pesanan', 'pesanan_details'));
         }
 
-        return view('pembeli/checkout', compact('pesanan', 'pesanan_details'));
+        if(empty($pesanan))
+        {
+            return view('pembeli/checkout');
+        }
+    }
+
+    public function deleteco($id)
+    {
+        $pesanan_detail = PesananDetail::where('id', $id)->first();
+
+        $pesanan_cek = Pesanan::where('id', $pesanan_detail->pesanan_id)->first();
+        $pesanan_cek->jumlah_harga = $pesanan_cek->jumlah_harga - $pesanan_detail->jumlah_harga;
+        $pesanan_cek->update();
+
+        $pesanan_detail->delete();
+
+        return redirect()->route('checkout');
     }
 }
