@@ -48,13 +48,13 @@
                     @foreach ($data as $row)
                         <tr>
                             <th scope="row">{{ $nom++ }}</th>
-                            <td>{{ $row->nama_barang }}</td>
+                            <td>{{ Str::limit($row->nama_barang, 20) }}</td>
                             <td>
                                 <img src="{{ asset('gambar/produk/' . $row->gambar) }}" alt="" style="width:50px">
                             </td>
                             <td>{{ $row->harga }}</td>
                             <td>{{ $row->stok }}</td>
-                            <td>{{ $row->keterangan }}</td>
+                            <td>{{ Str::limit($row->keterangan, 25) }}</td>
                             <td>
                                 <div class="btn-group dropleft">
                                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
@@ -71,6 +71,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                {{-- {{ $data->links() }} --}}
             </div>
         </section>
         <!-- /.content -->

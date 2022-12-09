@@ -199,7 +199,7 @@
     <!-- Featured End -->
 
 
-    <!-- Categories Start -->
+    {{-- <!-- Categories Start -->
     <div class="container-fluid pt-5">
         <div class="row px-xl-5 pb-3">
             <div class="col-lg-4 col-md-6 pb-1">
@@ -258,7 +258,7 @@
             </div>
         </div>
     </div>
-    <!-- Categories End -->
+    <!-- Categories End --> --}}
 
 
     <!-- Offer Start -->
@@ -309,12 +309,12 @@
                                 <h6>Rp. {{ $row->harga }}</h6>
                             </div>
                         </div>
-                        <div class="card-footer d-flex justify-content-between bg-light border">
+                        {{-- <div class="card-footer d-flex justify-content-between bg-light border">
                             <a href="{{ route('login') }}" class="btn btn-sm text-dark p-0"><i
                                     class="fas fa-eye text-primary mr-1"></i>Lihat Detail</a>
                             <a href="{{ route('login') }}" class="btn btn-sm text-dark p-0"><i
                                     class="fas fa-shopping-cart text-primary mr-1"></i>Tambah Ke Keranjang</a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             @endforeach
@@ -323,7 +323,7 @@
     <!-- Products End -->
 
 
-    <!-- Subscribe Start -->
+    {{-- <!-- Subscribe Start -->
     <div class="container-fluid bg-secondary my-5">
         <div class="row justify-content-md-center py-5 px-xl-5">
             <div class="col-md-6 col-12 py-5">
@@ -344,7 +344,7 @@
             </div>
         </div>
     </div>
-    <!-- Subscribe End -->
+    <!-- Subscribe End --> --}}
 
     <!-- Footer Start -->
     <div class="container-fluid bg-secondary text-dark mt-5 pt-5">

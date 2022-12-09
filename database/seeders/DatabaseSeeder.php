@@ -65,8 +65,35 @@ class DatabaseSeeder extends Seeder
             'harga' => 150000,
             'stok' => 50,
             'keterangan' => 'Jam tangan wanita elegan',
+        ]); 
+        Produk::create([
+            'nama_barang' => 'Jam Tangan LED Anak',
+            'gambar' => 'jam tangan led anak.png',
+            'harga' => 35000,
+            'stok' => 50,
+            'keterangan' => 'Jam tangan anak led sangat elegan',
         ]);
-        
+        Produk::create([
+            'nama_barang' => 'Kacamata Wellington Sports',
+            'gambar' => 'kacamata wellington sports.png',
+            'harga' => 199000,
+            'stok' => 50,
+            'keterangan' => 'Kacamata Wellington Sports Uniqlo terbaru',
+        ]);
+        Produk::create([
+            'nama_barang' => 'Jam Tangan Sport Anak Laki - Laki',
+            'gambar' => 'jam tangan sport anak laki2.png',
+            'harga' => 50000,
+            'stok' => 50,
+            'keterangan' => 'Jam tangan sport cocok untuk anak sampai remaja',
+        ]);
+        Produk::create([
+            'nama_barang' => 'Kacamata Boston',
+            'gambar' => 'kacamata boston.png',
+            'harga' => 99000,
+            'stok' => 50,
+            'keterangan' => 'Kacamata boston cetar membahana',
+        ]);
         Produk::create([
             'nama_barang' => 'Jam Tangan Pria',
             'gambar' => 'jam tangan pria.png',
