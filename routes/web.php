@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\DataUserController;
+use App\Http\Controllers\TransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +47,9 @@ Route::group(['prefix'=>'pembeli', 'middleware' => ['auth', 'hakakses:user']],fu
     Route::get('/dashboard', [LoginController::class, 'pembeli'])->name('pembeli');
     Route::get('/belanja', [ProdukController::class, 'belanja'])->name('belanja');
     Route::get('/detailbelanja/{id}', [ProdukController::class, 'detailbelanja'])->name('detailbelanja');
-    Route::post('/pesan/{id}', [ProdukController::class, 'pesan'])->name('pesan');
-    Route::get('/checkout', [ProdukController::class, 'checkout'])->name('checkout');
-    Route::get('/deleteco/{id}', [ProdukController::class, 'deleteco'])->name('deleteco');
+    Route::post('/pesan/{id}', [TransaksiController::class, 'pesan'])->name('pesan');
+    Route::get('/pesanlangsung/{id}', [TransaksiController::class, 'pesanlangsung'])->name('pesanlangsung');
+    Route::get('/checkout', [TransaksiController::class, 'checkout'])->name('checkout');
+    Route::get('/deleteco/{id}', [TransaksiController::class, 'deleteco'])->name('deleteco');
+    Route::get('/konfirmasico', [TransaksiController::class, 'konfirmasi'])->name('konfirmasico');
 });

@@ -86,7 +86,7 @@
                             <td colspan="4" align="right"><strong>Total Harga :</strong></td>
                             <td><strong>Rp. {{ number_format($pesanan->jumlah_harga) }}</strong></td>
                             <td>
-                                <a href="{{ url('konfirmasi_checkout') }}" class="btn btn-succes" 
+                                <a href="{{ url('pembeli/konfirmasico') }}" class="btn btn-succes" 
                                 onclick="return confirm('Anda yakin akan melakukan pembayaran ?');"><i class="fa fa-shopping-cart"></i>Bayar</a>
                             </td>
                         </tr>
