@@ -36,7 +36,7 @@ Copy `.env.example` kemudian rename menjadi `.env`. Edit pengaturan database di 
 php artisan key:generate
 ```
 
-<!-- 4. Migrasi tabelnya ke database dengan perintah
+4. Migrasi tabelnya ke database dengan perintah
 
 ```
 php artisan migrate --seed
@@ -46,14 +46,12 @@ Lalu masukkan perintah berikut untuk insert beberapa data ke database
 
 ```
 php artisan db:seed
-``` -->
+```
 
-4. Siap dijalankan...
+5. Siap dijalankan...
 ```
 php artisan serve
 ```
-
-<!-- <p align="center">Apabila memerlukan database sqldump, file bernama prognet8.sql</p> -->
 
 ## Contributing
 
