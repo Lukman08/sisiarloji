@@ -39,7 +39,7 @@ php artisan key:generate
 <!-- 4. Migrasi tabelnya ke database dengan perintah
 
 ```
-php artisan migrate
+php artisan migrate --seed
 ```
 
 Lalu masukkan perintah berikut untuk insert beberapa data ke database
