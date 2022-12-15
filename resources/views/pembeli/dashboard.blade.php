@@ -47,8 +47,8 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a href="{{ route('pembeli') }}" class="nav-item nav-link active">Home</a>
                             <a href="{{ route('belanja') }}" class="nav-item nav-link">Belanja</a>
-                            <a href="{{route('checkout')}}" class="nav-item nav-link">Keranjang</a>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            <a href="{{route('checkout')}}" class="nav-item nav-link">Troli</a>
+                            <a href="{{ route('riwayat') }}" class="nav-item nav-link">Riwayat</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
                             <div class="dropdown">

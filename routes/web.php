@@ -52,4 +52,6 @@ Route::group(['prefix'=>'pembeli', 'middleware' => ['auth', 'hakakses:user']],fu
     Route::get('/checkout', [TransaksiController::class, 'checkout'])->name('checkout');
     Route::get('/deleteco/{id}', [TransaksiController::class, 'deleteco'])->name('deleteco');
     Route::get('/konfirmasico', [TransaksiController::class, 'konfirmasi'])->name('konfirmasico');
+    Route::get('/riwayat', [TransaksiController::class, 'riwayat'])->name('riwayat');
+    Route::get('/riwayatdetail/{id}', [TransaksiController::class, 'riwayatdetail'])->name('riwayatdetail');
 });

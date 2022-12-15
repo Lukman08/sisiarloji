@@ -176,6 +176,15 @@ class TransaksiController extends Controller
             $produk->stok = $produk->stok-$pesanan_detail->jumlah;
             $produk->update();
         }
-        return redirect()->route('checkout');
+        return redirect()->route('riwayatdetail', [$pesanan_id]);
+    }
+    public function riwayat(){
+        $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', '!=',0)->get();
+        return view('pembeli/riwayat', compact('pesanan'));
+    }
+    public function riwayatdetail($id){
+        $pesanan = Pesanan::where('id' , $id)->first();
+        $pesanan_detail = PesananDetail::where('pesanan_id', $pesanan->id)->get();
+    return view('pembeli/riwayatdetail', compact('pesanan', 'pesanan_detail'));
     }
 }

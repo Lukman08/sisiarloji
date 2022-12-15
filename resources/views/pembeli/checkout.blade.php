@@ -19,16 +19,17 @@
     <!-- Shop Start -->
     <div class="container-fluid pt-5">
         <div class="row px-xl-5">
-            @if(empty($pesanan))
-            <div class="container text-right">
-            <p>Tanggal Pesanan: -</p>
-            </div>
-                    <table class="table table-bordered">
+            @if (empty($pesanan))
+                <div class="container text-right">
+                    <p>Tanggal Pesanan: -</p>
+                </div>
+                <table class="table table-bordered">
                     <thread>
                         <tr>
                             <th>No</th>
+                            <th>Gambar</th>
                             <th>Nama Barang</th>
-                            <th>Jumlah</th>
+                            <th>Qty</th>
                             <th>Harga</th>
                             <th>Total Harga</th>
                             <th>Aksi</th>
@@ -45,54 +46,62 @@
                             <td colspan="4" align="right"><strong>Total Harga :</strong></td>
                             <td><strong>Rp. 0</strong></td>
                             <td>
-                                <a href="{{ route('belanja') }}" class="btn btn-succes"><i class="fa fa-shopping-cart"></i> Bayar</a>
+                                <a href="{{ route('belanja') }}" class="btn btn-succes"><i class="fa fa-shopping-cart"></i>
+                                    Bayar</a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             @endif
-            @if(!empty($pesanan))
-            <div class="container text-right">
-                <p>Tanggal Pesanan: {{ $pesanan->tanggal }}</p>
-            </div>
-                    <table class="table table-bordered">
+            @if (!empty($pesanan))
+                <div class="container text-right">
+                    <p>Tanggal Pesanan: {{ $pesanan->tanggal }}</p>
+                </div>
+                <table class="table table-bordered">
                     <thread>
                         <tr>
-                            <th>No</th>
-                            <th>Nama Barang</th>
-                            <th>Jumlah</th>
-                            <th>Harga</th>
-                            <th>Total Harga</th>
-                            <th>Aksi</th>
+                            <th class="text-center">No</th>
+                            <th class="text-center">Gambar</th>
+                            <th class="text-center">Nama Barang</th>
+                            <th class="text-center">Qty</th>
+                            <th class="text-center">Harga</th>
+                            <th class="text-center">Total Harga</th>
+                            <th class="text-center">Aksi</th>
                         </tr>
                     </thread>
                     <tbody>
-                    @php
-                    $no = 1;
-                    @endphp
-                        @foreach($pesanan_details as $pesanan_detail)
-                        <tr>
-                            <td>{{ $no++ }}</td>
-                            <td>{{ $pesanan_detail->produk->nama_barang }}</td>
-                            <td>{{ $pesanan_detail->jumlah}}</td>
-                            <td align="left">Rp. {{ number_format($pesanan_detail->produk->harga) }}</td>
-                            <td>Rp. {{ number_format($pesanan_detail->jumlah_harga) }}</td>
-                            <td>
-                                <a href="{{url('pembeli/deleteco', $pesanan_detail->id)}}" type="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                            </td>
-                        </tr>
+                        @php
+                            $no = 1;
+                        @endphp
+                        @foreach ($pesanan_details as $pesanan_detail)
+                            <tr>
+                                <td class="text-center">{{ $no++ }}</td>
+                                <td class="text-center">
+                                    <img src="{{ asset('gambar/produk/' . $pesanan_detail->produk->gambar) }}" alt=""
+                                        style="width:50px">
+                                </td>
+                                <td>{{ $pesanan_detail->produk->nama_barang }}</td>
+                                <td class="text-center">{{ $pesanan_detail->jumlah }}</td>
+                                <td class="text-center" align="left">Rp. {{ number_format($pesanan_detail->produk->harga) }}</td>
+                                <td class="text-center">Rp. {{ number_format($pesanan_detail->jumlah_harga) }}</td>
+                                <td class="text-center">
+                                    <a href="{{ url('pembeli/deleteco', $pesanan_detail->id) }}"
+                                        type="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
                         @endforeach
                         <tr>
-                            <td colspan="4" align="right"><strong>Total Harga :</strong></td>
+                            <td colspan="5" align="right"><strong>Total Harga :</strong></td>
                             <td><strong>Rp. {{ number_format($pesanan->jumlah_harga) }}</strong></td>
                             <td>
-                                <a href="{{ url('pembeli/konfirmasico') }}" class="btn btn-succes" 
-                                onclick="return confirm('Anda yakin akan melakukan pembayaran ?');"><i class="fa fa-shopping-cart"></i>Bayar</a>
+                                <a href="{{ url('pembeli/konfirmasico') }}" class="btn btn-succes"
+                                    onclick="return confirm('Anda yakin akan melakukan pembayaran ?');"><i
+                                        class="fa fa-shopping-cart"></i> Bayar</a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                @endif
+            @endif
         </div>
     </div>
 @endsection

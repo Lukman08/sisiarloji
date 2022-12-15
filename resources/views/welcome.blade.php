@@ -354,7 +354,7 @@
                     <h1 class="mb-4 display-5 font-weight-semi-bold"><span
                             class="text-primary font-weight-bold border border-white px-3 mr-1">Sisi Arloji</span></h1>
                 </a>
-                <p>Sisi Arloji merupakan toko yang menjual aksesoris seperti kacamata dan jam tangan, tetapi saat ini
+                <p class="text-justify">Sisi Arloji merupakan toko yang menjual aksesoris seperti kacamata dan jam tangan, tetapi saat ini
                     dalam pengelolaannya masih dilakukan secara manual yaitu dengan datang langsung ke toko tersebut
                     untuk mengetahui informasI dan melakukan pemesanan khusuSnya pemesanan kacamata dan jam.</p>
                 {{-- <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA
@@ -365,18 +365,13 @@
             <div class="col-lg-8 col-md-12">
                 <div class="row">
                     <div class="col-md-4 mb-5">
-                        <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
+                        <h5 class="font-weight-bold text-dark mb-4">Link</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-dark mb-2" href="{{ route('index') }}"><i
+                            <a class="text-dark mb-2" href="{{ route('login') }}"><i
                                     class="fa fa-angle-right mr-2"></i>Home</a>
-                            <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our
-                                Shop</a>
-                            <a class="text-dark mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shopping
-                                Cart</a>
-                            <a class="text-dark mb-2" href="#"><i
-                                    class="fa fa-angle-right mr-2"></i>Checkout</a>
-                            <a class="text-dark" href="#"><i class="fa fa-angle-right mr-2"></i>Contact
-                                Us</a>
+                            <a class="text-dark mb-2" href="{{ route('login') }}"><i class="fa fa-angle-right mr-2"></i>Belanja</a>
+                            <a class="text-dark mb-2" href="{{ route('login') }}"><i class="fa fa-angle-right mr-2"></i>Troli</a>
+                            <a class="text-dark mb-2" href="{{ route('login') }}"><i class="fa fa-angle-right mr-2"></i>Riwayat</a>
                         </div>
                     </div>
                     <div class="col-md-4 mb-5">
