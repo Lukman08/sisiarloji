@@ -33,12 +33,12 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>150</h3>
+                                <h3>{{ $pesanan }}</h3>
 
-                                <p>New Orders</p>
+                                <p>Transaksi</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-bag"></i>
+                                <i class="fas fa-shopping-cart"></i>
                             </div>
                             <a href="#" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
@@ -49,12 +49,12 @@
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                                <h3>{{ $pesanandetail }}</h3>
 
-                                <p>Bounce Rate</p>
+                                <p>Produk Terjual</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-stats-bars"></i>
+                                <i class="fas fa-chart-pie"></i>
                             </div>
                             <a href="#" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
@@ -69,7 +69,7 @@
                                 <p>User Terdaftar</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-person-add"></i>
+                                <i class="fas fa-user-plus"></i>
                             </div>
                             <a href="{{ route('datauser') }}" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
@@ -85,7 +85,7 @@
                                 <p>Data Produk</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-pie-graph"></i>
+                                <i class="fas fa-box-open"></i>
                             </div>
                             <a href="{{ route('produk') }}" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>

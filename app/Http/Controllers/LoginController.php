@@ -55,9 +55,11 @@ class LoginController extends Controller
     }
 
     public function admin(){
-        $datauser = User::count();
+        $datauser = User::where('role', 'user')->count();
         $produk = Produk::count();
-        return view('admin.dashboard', compact('datauser', 'produk'));
+        $pesanan = Pesanan::count();
+        $pesanandetail = Pesanandetail::count();
+        return view('admin.dashboard', compact('datauser', 'produk', 'pesanan', 'pesanandetail'));
     }
 
     public function  pembeli(){

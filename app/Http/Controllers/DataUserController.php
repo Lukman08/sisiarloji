@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class DataUserController extends Controller
 {
     public function datauser(){
-        $data = User::where('role', 'user')->get();
+        $data = User::where('role', 'user')->simplePaginate(5);
         return view('admin/datauser', compact('data'));
     }
 

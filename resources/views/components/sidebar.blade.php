@@ -50,7 +50,7 @@
                 <li class="nav-item">
                     <a href="{{ route('datauser') }}"
                         class="nav-link {{ request()->is('admin/datauser') ? ' active' : '' }}">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-user-plus"></i>
                         <p> Data User</p>
                     </a>
                 </li>
