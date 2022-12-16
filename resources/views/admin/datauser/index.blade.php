@@ -22,25 +22,41 @@
 
         <!-- Main content -->
         <section class="content">
-            <div class="container mb-2">
-                <a href="{{ route('tambahuser') }}" class="btn btn-outline-success">
-                    <i class="fa fa-plus-circle"></i>
-                </a>
-            </div>
 
             <!-- Main row -->
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
+                            <div class="row g-2">
+                                <div class="col-md">
+                                    <a href="{{ route('tambahuser') }}" class="btn btn-outline-success">
+                                        <i class="fa fa-plus-circle"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md"></div>
+                                <div class="col-md">
+                                    <form action="{{ route('datauser') }}" method="GET">
+                                        <div class="input-group">
+                                            <input type="search" class="form-control" placeholder="Cari user..."
+                                                name="cari">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text bg-transparent text-primary">
+                                                    <i class="fa fa-search"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nama</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Bergabung Pada</th>
-                                        <th scope="col">Aksi</th>
+                                        <th scope="col" class="text-center">#</th>
+                                        <th scope="col" class="text-center">Nama</th>
+                                        <th scope="col" class="text-center">Email</th>
+                                        <th scope="col" class="text-center">Bergabung Pada</th>
+                                        <th scope="col" class="text-center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,11 +65,11 @@
                                     @endphp
                                     @foreach ($data as $row)
                                         <tr>
-                                            <th scope="row">{{ $nom++ }}</th>
+                                            <th class="text-center" scope="row">{{ $nom++ }}</th>
                                             <td>{{ $row->name }}</td>
                                             <td>{{ $row->email }}</td>
-                                            <td>{{ $row->created_at->diffForHumans() }}</td>
-                                            <td>
+                                            <td class="text-center">{{ $row->created_at->diffForHumans() }}</td>
+                                            <td class="text-center">
                                                 <div class="btn-group dropleft">
                                                     <button type="button" class="btn btn-primary dropdown-toggle"
                                                         data-toggle="dropdown" aria-expanded="false">

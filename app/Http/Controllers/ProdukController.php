@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 
 class ProdukController extends Controller
 {
-    public function produk(){
-        $data = Produk::orderBy('id', 'DESC')->simplePaginate(5);
-        // $data = Informasi::all();
+    public function produk(Request $request){    
+        if($request->has('cari')){
+            $data = Produk::where('nama_barang', 'LIKE', '%' .$request->cari.'%')->simplePaginate(5);
+        }else{
+            $data = Produk::orderBy('nama_barang', 'ASC')->simplePaginate(5);
+        }
         return view('admin.produk.index', compact('data'));
     }
 
@@ -49,8 +52,12 @@ class ProdukController extends Controller
         return redirect()->route('produk')->with('delete', 'Informasi berhasil dihapus.');
     }
 
-    public function belanja(){
-        $data = Produk::orderBy('id', 'DESC')->simplePaginate(8);
+    public function belanja(Request $request){
+        if($request->has('cari')){
+            $data = Produk::where('nama_barang', 'LIKE', '%' .$request->cari.'%')->simplePaginate(8);
+        }else{
+            $data = Produk::orderBy('id', 'DESC')->simplePaginate(8);
+        }
         return view('pembeli.belanja.belanja', compact('data'));
     }
 

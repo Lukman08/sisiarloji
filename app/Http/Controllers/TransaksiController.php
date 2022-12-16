@@ -197,7 +197,7 @@ class TransaksiController extends Controller
 
     public function riwayat(){
         $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', '!=',0)->get();
-        return view('pembeli.riwayat', compact('pesanan'));
+        return view('pembeli.belanja.riwayat', compact('pesanan'));
     }
     public function riwayatdetail($id){
         $pesanan = Pesanan::where('id' , $id)->first();

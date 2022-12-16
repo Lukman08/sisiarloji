@@ -137,13 +137,13 @@
 
 
             <!-- Shop Product Start -->
-            <div class="col-lg-9 col-md-12">
+            <div class="col-lg-12 col-md-12">
                 <div class="row pb-3">
                     <div class="col-12 pb-1">
                         <div class="d-flex align-items-center justify-content-between mb-4">
-                            <form action="">
+                            <form action="{{ route('belanja') }}" method="GET">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search by name">
+                                    <input type="search" class="form-control" placeholder="Cari produk.." name="cari">
                                     <div class="input-group-append">
                                         <span class="input-group-text bg-transparent text-primary">
                                             <i class="fa fa-search"></i>
@@ -151,8 +151,8 @@
                                     </div>
                                 </div>
                             </form>
-                            <div class="dropdown ml-4">
-                                {{-- <button class="btn border dropdown-toggle" type="button" id="triggerId"
+                            {{-- <div class="dropdown ml-4"> --}}
+                            {{-- <button class="btn border dropdown-toggle" type="button" id="triggerId"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Sort by
                                 </button>
@@ -161,7 +161,7 @@
                                     <a class="dropdown-item" href="#">Popularity</a>
                                     <a class="dropdown-item" href="#">Best Rating</a>
                                 </div> --}}
-                            </div>
+                            {{-- </div> --}}
                         </div>
                     </div>
                     @foreach ($data as $row)
@@ -173,18 +173,18 @@
                                         alt="">
                                 </div>
                                 <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                    <h6 class="text-truncate mb-3">{{ $row->nama_barang }}</h6>
-                                    <div class="d-flex justify-content-center">
+                                    <h5 class="text-truncate mb-3"><strong>{{ $row->nama_barang }}</strong></h5>
+                                    <div class="d-flex justify-content-right">
                                         <h6>Rp. {{ $row->harga }}</h6>
                                     </div>
                                     <div class="d-flex justify-content-right">
-                                        <p>Stok: {{ $row->stok }}</p>
+                                            <p>Stok: {{ $row->stok }}</p>
                                     </div>
                                 </div>
-                                <div class="card-footer d-flex justify-content-between bg-light border">
-                                    <a href="{{ route('detailbelanja', $row->id) }}" class="btn btn-sm text-dark p-0"><i
+                                <div class="card-footer d-flex justify-content-right bg-light border">
+                                    <a href="{{ route('detailbelanja', $row->id) }}" class="btn btn-sm text-dark p-0 mr-3"><i
                                             class="fas fa-eye text-primary mr-1"></i>Detail</a>
-                                    <a href="{{ route('pesanlangsung', $row->id) }}" class="btn btn-sm text-dark p-0"><i
+                                    <a href="{{ route('pesanlangsung', $row->id) }}" class="btn btn-sm text-dark p-0 mr-3"><i
                                             class="fas fa-shopping-cart text-primary mr-1"></i>Troli</a>
                                 </div>
                             </div>

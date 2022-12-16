@@ -27,6 +27,27 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
+                            <div class="row g-2">
+                                <div class="col-md">
+                                    <a href="" class="btn btn-outline-success">
+                                        <i class="fa fa-file-pdf"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md"></div>
+                                <div class="col-md">
+                                    <form action="{{ route('transaksi') }}" method="GET">
+                                        <div class="input-group">
+                                            <input type="search" class="form-control" placeholder="Cari nama pemesan..."
+                                                name="cari">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text bg-transparent text-primary">
+                                                    <i class="fa fa-search"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
@@ -46,7 +67,7 @@
                                     @foreach ($data as $row)
                                         <tr>
                                             <th class="text-center" scope="row">{{ $nom++ }}</th>
-                                            <td class="text-center">{{ $row->user->name }}</td>
+                                            <td class="text-center">{{ Str::limit($row->user->name, 20) }}</td>
                                             <td class="text-center">{{ $row->tanggal }}</td>
                                             <td class="text-center">
                                                 @if ($row->pembayaran == 0)
@@ -59,7 +80,7 @@
                                                 @if ($row->status == 1)
                                                     Belum Bayar
                                                 @elseif($row->status == 2)
-                                                    Diproses
+                                                    Sudah Dibayar
                                                 @elseif($row->status == 3)
                                                     Selesai
                                                 @endif
@@ -79,7 +100,8 @@
                                                     <a href="{{ route('selesai', $row->id) }}" class="btn btn-info"><i
                                                             class="fa fa-check-circle"></i></a>
                                                 @elseif ($row->status == 3)
-                                                    <i class="fa fa-check"></i>
+                                                    <a href="" class="btn btn-dark"><i
+                                                            class="fa fa-download"></i></a>
                                                 @endif
                                             </td>
                                         </tr>

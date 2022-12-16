@@ -7,8 +7,12 @@ use Illuminate\Http\Request;
 
 class DataUserController extends Controller
 {
-    public function datauser(){
-        $data = User::where('role', 'user')->simplePaginate(5);
+    public function datauser(Request $request){
+        if($request->has('cari')){
+            $data = User::where('name', 'LIKE', '%' .$request->cari.'%')->simplePaginate(5);
+        }else{
+            $data = User::where('role', 'user')->simplePaginate(5);
+        }
         return view('admin.datauser.index', compact('data'));
     }
 
