@@ -19,40 +19,58 @@
     <!-- Shop Start -->
     <div class="container-fluid pt-5">
         <div class="row px-xl-5">
-                <table class="table table-bordered">
-                    <thread>
+            <table class="table table-bordered">
+                <thread>
+                    <tr>
+                        <th class="text-center">No</th>
+                        <th class="text-center">Tanggal</th>
+                        <th class="text-center">Pembayaran</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Jumlah Harga</th>
+                        <th class="text-center">Aksi</th>
+                    </tr>
+                </thread>
+                <tbody>
+                    @php
+                        $no = 1;
+                    @endphp
+                    @foreach ($pesanan as $row)
                         <tr>
-                            <th>No</th>
-                            <th>Tanggal</th>
-                            <th>Status</th>
-                            <th>Jumlah Harga</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thread>
-                    <tbody>
-                        @php
-                            $no = 1;
-                        @endphp
-                        @foreach ($pesanan as $row)
-                            <tr>
-                                <td>{{ $no++ }}</td>
-                                <td>{{ $row->tanggal }}</td>
-                                <td>
-                                    @if ($row->status == 1)
+                            <td class="text-center">{{ $no++ }}</td>
+                            <td class="text-center">{{ $row->tanggal }}</td>
+                            <td class="text-center">
+                                @if ($row->pembayaran == 0)
+                                    Transfer Bank
+                                @elseif ($row->pembayaran == 1)
+                                    Bayar Langsung
+                                @endif
+                            </td>
+                            <td class="text-center">
+                                @if ($row->status == 1)
                                     Belum Bayar
-                                    @else
-                                    Sudah Bayar
-                                    @endif
-                                </td>
-                                <td>Rp. {{ number_format($row->jumlah_harga+$row->kode) }}</td>
-                                <td>
-                                    <a href="{{url('pembeli/riwayatdetail', $row->id)}}" class="btn
-                                        btn-primary"><i class="fa fa-info-circle"></i> Detail </a>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                                @elseif($row->status == 2)
+                                    Diproses
+                                @endif
+                            </td>
+                            <td class="text-center">
+                                @if ($row->pembayaran == 0)
+                                    Rp. {{ number_format($row->jumlah_harga + $row->kode) }}
+                                @elseif ($row->pembayaran == 1)
+                                    Rp. {{ number_format($row->jumlah_harga) }}
+                                @endif
+                            </td>
+                            <td class="text-center">
+                                @if ($row->status == 1)
+                                <a href="{{ url('pembeli/riwayatdetail', $row->id) }}" class="btn btn-outline-primary"><i
+                                        class="fa fa-info-circle"></i></a>
+                                @elseif ($row->status == 2)
+                                    <a href="" class="btn btn-outline-success"><i class="fa fa-print"></i></a>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection

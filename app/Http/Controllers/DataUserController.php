@@ -9,11 +9,11 @@ class DataUserController extends Controller
 {
     public function datauser(){
         $data = User::where('role', 'user')->simplePaginate(5);
-        return view('admin/datauser', compact('data'));
+        return view('admin.datauser.index', compact('data'));
     }
 
     public function tambahuser(){
-        return view('admin/tambahuser');
+        return view('admin.datauser.tambah');
     }
 
     public function insertuser(Request $request){

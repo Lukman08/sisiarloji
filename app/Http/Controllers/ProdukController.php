@@ -10,11 +10,11 @@ class ProdukController extends Controller
     public function produk(){
         $data = Produk::orderBy('id', 'DESC')->simplePaginate(5);
         // $data = Informasi::all();
-        return view('admin/produk', compact('data'));
+        return view('admin.produk.index', compact('data'));
     }
 
     public function tambahproduk(){
-        return view('admin.tambahproduk');
+        return view('admin.produk.tambah');
     }
 
     public function insertproduk(Request $request)
@@ -30,7 +30,7 @@ class ProdukController extends Controller
 
     public function editproduk($id){
         $data = Produk::find($id);
-        return view('admin/editproduk', compact('data'));
+        return view('admin.produk.edit', compact('data'));
     }
 
     public function updateproduk(Request $request, $id){
@@ -51,11 +51,11 @@ class ProdukController extends Controller
 
     public function belanja(){
         $data = Produk::orderBy('id', 'DESC')->simplePaginate(8);
-        return view('pembeli/belanja', compact('data'));
+        return view('pembeli.belanja.belanja', compact('data'));
     }
 
     public function detailbelanja($id){
         $data = Produk::find($id);
-        return view('pembeli/detail', compact('data'));
+        return view('pembeli.belanja.detail', compact('data'));
     }
 }

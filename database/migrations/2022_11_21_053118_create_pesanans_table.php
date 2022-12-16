@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->date('tanggal');
+            $table->string('pembayaran')->nullable();
             $table->string('status');
             $table->integer('kode');
             $table->integer('jumlah_harga');

@@ -62,7 +62,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->is('admin/transaksi') ? ' active' : '' }}">
+                    <a href="{{ route('transaksi') }}" class="nav-link {{ request()->is('admin/transaksi') ? ' active' : '' }}">
                         <i class="fa fa-shopping-cart"></i>
                         <p> Transaksi</p>
                     </a>

@@ -41,6 +41,9 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'hakakses:admin']],fun
     Route::get('/editproduk/{id}', [ProdukController::class, 'editproduk'])->name('editproduk');
     Route::post('/updateproduk/{id}', [ProdukController::class, 'updateproduk'])->name('updateproduk');
     Route::get('/deleteproduk/{id}', [ProdukController::class, 'deleteproduk'])->name('deleteproduk');
+
+    Route::get('/transaksi', [TransaksiController::class, 'transaksi'])->name('transaksi');
+    Route::get('/selesai/{id}', [TransaksiController::class, 'selesai'])->name('selesai');
 });
 
 Route::group(['prefix'=>'pembeli', 'middleware' => ['auth', 'hakakses:user']],function(){
@@ -51,7 +54,8 @@ Route::group(['prefix'=>'pembeli', 'middleware' => ['auth', 'hakakses:user']],fu
     Route::get('/pesanlangsung/{id}', [TransaksiController::class, 'pesanlangsung'])->name('pesanlangsung');
     Route::get('/checkout', [TransaksiController::class, 'checkout'])->name('checkout');
     Route::get('/deleteco/{id}', [TransaksiController::class, 'deleteco'])->name('deleteco');
-    Route::get('/konfirmasico', [TransaksiController::class, 'konfirmasi'])->name('konfirmasico');
+    Route::get('/transfer', [TransaksiController::class, 'transfer'])->name('transfer');
+    Route::get('/langsung', [TransaksiController::class, 'langsung'])->name('langsung');
     Route::get('/riwayat', [TransaksiController::class, 'riwayat'])->name('riwayat');
     Route::get('/riwayatdetail/{id}', [TransaksiController::class, 'riwayatdetail'])->name('riwayatdetail');
 });

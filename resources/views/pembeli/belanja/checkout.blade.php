@@ -77,12 +77,13 @@
                             <tr>
                                 <td class="text-center">{{ $no++ }}</td>
                                 <td class="text-center">
-                                    <img src="{{ asset('gambar/produk/' . $pesanan_detail->produk->gambar) }}" alt=""
-                                        style="width:50px">
+                                    <img src="{{ asset('gambar/produk/' . $pesanan_detail->produk->gambar) }}"
+                                        alt="" style="width:50px">
                                 </td>
                                 <td>{{ $pesanan_detail->produk->nama_barang }}</td>
                                 <td class="text-center">{{ $pesanan_detail->jumlah }}</td>
-                                <td class="text-center" align="left">Rp. {{ number_format($pesanan_detail->produk->harga) }}</td>
+                                <td class="text-center" align="left">Rp.
+                                    {{ number_format($pesanan_detail->produk->harga) }}</td>
                                 <td class="text-center">Rp. {{ number_format($pesanan_detail->jumlah_harga) }}</td>
                                 <td class="text-center">
                                     <a href="{{ url('pembeli/deleteco', $pesanan_detail->id) }}"
@@ -93,10 +94,22 @@
                         <tr>
                             <td colspan="5" align="right"><strong>Total Harga :</strong></td>
                             <td><strong>Rp. {{ number_format($pesanan->jumlah_harga) }}</strong></td>
-                            <td>
+                            {{-- <td class="text-center">
                                 <a href="{{ url('pembeli/konfirmasico') }}" class="btn btn-succes"
                                     onclick="return confirm('Anda yakin akan melakukan pembayaran ?');"><i
                                         class="fa fa-shopping-cart"></i> Bayar</a>
+                            </td> --}}
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
+                                        aria-expanded="false">
+                                        <i class="fa fa-shopping-cart"></i> Bayar
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{{ url('pembeli/transfer') }}">Transfer</a>
+                                        <a class="dropdown-item" href="{{ url('pembeli/langsung') }}">Ditempat</a>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     </tbody>

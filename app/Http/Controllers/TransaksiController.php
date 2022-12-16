@@ -62,7 +62,6 @@ class TransaksiController extends Controller
         $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
         $pesanan->jumlah_harga = $pesanan->jumlah_harga+$data->harga*1;
         $pesanan->update();
-        
         return redirect()->route('belanja');
     }
 
@@ -127,12 +126,12 @@ class TransaksiController extends Controller
         if(!empty($pesanan))
         {
             $pesanan_details = PesananDetail::where('pesanan_id', $pesanan->id)->get();
-            return view('pembeli/checkout', compact('pesanan', 'pesanan_details'));
+            return view('pembeli.belanja.checkout', compact('pesanan', 'pesanan_details'));
         }
 
         if(empty($pesanan))
         {
-            return view('pembeli/checkout');
+            return view('pembeli.belanja.checkout');
         }
     }
 
@@ -149,7 +148,7 @@ class TransaksiController extends Controller
         return redirect()->route('checkout');
     }
 
-    public function konfirmasi()
+    public function transfer()
     {
         // $user = User::where('id', Auth::user()->id)->where('status', 0)->first();
 
@@ -167,6 +166,7 @@ class TransaksiController extends Controller
 
         $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
         $pesanan_id = $pesanan->id;
+        $pesanan->pembayaran = 0;
         $pesanan->status = 1;
         $pesanan->update();
 
@@ -178,13 +178,42 @@ class TransaksiController extends Controller
         }
         return redirect()->route('riwayatdetail', [$pesanan_id]);
     }
+
+    public function langsung(){
+        $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
+        $pesanan_id = $pesanan->id;
+        $pesanan->pembayaran = 1;
+        $pesanan->status = 2;
+        $pesanan->update();
+
+        $pesanan_details = PesananDetail::where('pesanan_id', $pesanan_id)->get();
+        foreach($pesanan_details as $pesanan_detail) {
+            $produk = Produk::where('id', $pesanan_detail->produk_id)->first();
+            $produk->stok = $produk->stok-$pesanan_detail->jumlah;
+            $produk->update();
+        }
+        return redirect()->route('riwayat');
+    }
+
     public function riwayat(){
         $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status', '!=',0)->get();
-        return view('pembeli/riwayat', compact('pesanan'));
+        return view('pembeli.riwayat', compact('pesanan'));
     }
     public function riwayatdetail($id){
         $pesanan = Pesanan::where('id' , $id)->first();
         $pesanan_detail = PesananDetail::where('pesanan_id', $pesanan->id)->get();
-    return view('pembeli/riwayatdetail', compact('pesanan', 'pesanan_detail'));
+    return view('pembeli.bayar.transfer.riwayatdetail', compact('pesanan', 'pesanan_detail'));
+    }
+
+    //  admin
+    public function transaksi(){
+        $data = Pesanan::orderBy('id', 'ASC')->simplePaginate(5);
+        return view('admin.transaksi.index', compact('data'));
+    }
+    public function selesai($id){
+        $data = Pesanan::where('id', $id)->first();
+        $data->status = 3;
+        $data->update();
+        return redirect()->route('transaksi');
     }
 }
