@@ -82,24 +82,10 @@
                     id="navbar-vertical">
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link" data-toggle="dropdown">Jam Tangan <i
-                                    class="fa fa-angle-down float-right mt-1"></i></a>
-                            <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
-                                <a href="" class="dropdown-item">Men's Dresses</a>
-                                <a href="" class="dropdown-item">Women's Dresses</a>
-                                <a href="" class="dropdown-item">Baby's Dresses</a>
-                            </div>
+                            <a href="#" class="nav-link">Jam Tangan</a>
+                            <a href="#" class="nav-link">Kacamata</a>
+
                         </div>
-                        <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link" data-toggle="dropdown">Kacamata <i
-                                        class="fa fa-angle-down float-right mt-1"></i></a>
-                                <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
-                                    <a href="" class="dropdown-item">Men's Dresses</a>
-                                    <a href="" class="dropdown-item">Women's Dresses</a>
-                                    <a href="" class="dropdown-item">Baby's Dresses</a>
-                                </div>
-                            </div>
                 </nav>
             </div>
             <div class="col-lg-9">
@@ -354,7 +340,8 @@
                     <h1 class="mb-4 display-5 font-weight-semi-bold"><span
                             class="text-primary font-weight-bold border border-white px-3 mr-1">Sisi Arloji</span></h1>
                 </a>
-                <p class="text-justify">Sisi Arloji merupakan toko yang menjual aksesoris seperti kacamata dan jam tangan, tetapi saat ini
+                <p class="text-justify">Sisi Arloji merupakan toko yang menjual aksesoris seperti kacamata dan jam
+                    tangan, tetapi saat ini
                     dalam pengelolaannya masih dilakukan secara manual yaitu dengan datang langsung ke toko tersebut
                     untuk mengetahui informasI dan melakukan pemesanan khusuSnya pemesanan kacamata dan jam.</p>
                 {{-- <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA
@@ -369,9 +356,12 @@
                         <div class="d-flex flex-column justify-content-start">
                             <a class="text-dark mb-2" href="{{ route('login') }}"><i
                                     class="fa fa-angle-right mr-2"></i>Home</a>
-                            <a class="text-dark mb-2" href="{{ route('login') }}"><i class="fa fa-angle-right mr-2"></i>Belanja</a>
-                            <a class="text-dark mb-2" href="{{ route('login') }}"><i class="fa fa-angle-right mr-2"></i>Troli</a>
-                            <a class="text-dark mb-2" href="{{ route('login') }}"><i class="fa fa-angle-right mr-2"></i>Riwayat</a>
+                            <a class="text-dark mb-2" href="{{ route('login') }}"><i
+                                    class="fa fa-angle-right mr-2"></i>Belanja</a>
+                            <a class="text-dark mb-2" href="{{ route('login') }}"><i
+                                    class="fa fa-angle-right mr-2"></i>Troli</a>
+                            <a class="text-dark mb-2" href="{{ route('login') }}"><i
+                                    class="fa fa-angle-right mr-2"></i>Riwayat</a>
                         </div>
                     </div>
                     <div class="col-md-4 mb-5">

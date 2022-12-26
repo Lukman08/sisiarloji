@@ -19,113 +19,146 @@
     <!-- Page Header End -->
 
     <!-- Shop Start -->
-    
+
     @if ($pesanan->pembayaran == 0)
-    <div class="container-fluid pt-5">
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5>Berhasil Checkout</h5>
-                <h6>Untuk pembayaran silahkan transfer sebesar: <strong>Rp.
-                        {{ number_format($pesanan->jumlah_harga + $pesanan->kode) }}</strong></h6>
-                <h6>Ke Rekening Bank BRI:<strong> 12345678</strong> a/n <strong>Nama</strong></h6>
+        <div class="container-fluid pt-5">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5>Berhasil Checkout</h5>
+                    <h6>Untuk pembayaran silahkan transfer sebesar: <strong>Rp.
+                            {{ number_format($pesanan->jumlah_harga + $pesanan->kode) }}</strong></h6>
+                    <h6>Ke Rekening Bank BRI:<strong> 002801089564504</strong> a/n <strong>Lukman Hakim</strong></h6>
+                </div>
             </div>
-        </div>
-        <div class="row px-xl-5">
-            <div class="container text-right">
-                <p>Tanggal Pesan: {{ $pesanan->tanggal }}</p>
-            </div>
-            <table class="table table-bordered">
-                <thread>
-                    <tr>
-                        <th class="text-center">No</th>
-                        <th class="text-center">Gambar</th>
-                        <th class="text-center">Nama Produk</th>
-                        <th class="text-center">Qty</th>
-                        <th class="text-center">Harga</th>
-                        <th class="text-center">Total Harga</th>
-                    </tr>
-                </thread>
-                <tbody>
-                    @php
-                        $no = 1;
-                    @endphp
-                    @foreach ($pesanan_detail as $row)
+            <div class="row px-xl-5">
+                <div class="container text-right">
+                    <p>Tanggal Pesan: {{ $pesanan->tanggal }}</p>
+                </div>
+                <table class="table table-bordered">
+                    <thread>
                         <tr>
-                            <td class="text-center">{{ $no++ }}</td>
-                            <td class="text-center">
-                                <img src="{{ asset('gambar/produk/' . $row->produk->gambar) }}" alt=""
-                                    style="width:50px">
-                            </td>
-                            <td>{{ $row->produk->nama_barang }}</td>
-                            <td class="text-center">{{ $row->jumlah }}</td>
-                            <td class="text-center">Rp. {{ number_format($row->produk->harga) }}</td>
-                            <td class="text-center">Rp. {{ number_format($row->jumlah_harga) }}</td>
+                            <th class="text-center">No</th>
+                            <th class="text-center">Gambar</th>
+                            <th class="text-center">Nama Produk</th>
+                            <th class="text-center">Qty</th>
+                            <th class="text-center">Harga</th>
+                            <th class="text-center">Total Harga</th>
                         </tr>
-                    @endforeach
-                    <tr>
-                        <td colspan="5" align="right"><strong>Total Harga :</strong></td>
-                        <td><strong>Rp. {{ number_format($pesanan->jumlah_harga) }}</strong></td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" align="right"><strong>Kode Unik :</strong></td>
-                        <td><strong>Rp. {{ number_format($pesanan->kode) }}</strong></td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" align="right"><strong>Total Transfer :</strong></td>
-                        <td><strong>Rp. {{ number_format($pesanan->jumlah_harga + $pesanan->kode) }}</strong></td>
-                    </tr>
-                </tbody>
-            </table>
+                    </thread>
+                    <tbody>
+                        @php
+                            $no = 1;
+                        @endphp
+                        @foreach ($pesanan_detail as $row)
+                            <tr>
+                                <td class="text-center">{{ $no++ }}</td>
+                                <td class="text-center">
+                                    <img src="{{ asset('gambar/produk/' . $row->produk->gambar) }}" alt=""
+                                        style="width:50px">
+                                </td>
+                                <td>{{ $row->produk->nama_barang }}</td>
+                                <td class="text-center">{{ $row->jumlah }}</td>
+                                <td class="text-center">Rp. {{ number_format($row->produk->harga) }}</td>
+                                <td class="text-center">Rp. {{ number_format($row->jumlah_harga) }}</td>
+                            </tr>
+                        @endforeach
+                        <tr>
+                            <td colspan="5" align="right"><strong>Total Harga :</strong></td>
+                            <td><strong>Rp. {{ number_format($pesanan->jumlah_harga) }}</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" align="right"><strong>Kode Unik :</strong></td>
+                            <td><strong>Rp. {{ number_format($pesanan->kode) }}</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" align="right"><strong>Total Transfer :</strong></td>
+                            <td><strong>Rp. {{ number_format($pesanan->jumlah_harga + $pesanan->kode) }}</strong></td>
+                        </tr>
+                        <tr></tr>
+                        @if ($pesanan->buktitf == null)
+                            <tr>
+                                <td colspan="6">
+                                    <form action="{{ url('pembeli/buktitf', $pesanan->id) }}" method="post"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="exampleInputFile">Upload Bukti Transfer</label>
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input class="form-control" type="file" id="exampleInputEmail1"
+                                                        name="buktitf">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn-block btn-primary" id="exampleInputEmail1"
+                                            aria-describedby="emailHelp">Upload</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @else
+                            <tr>
+                                <td colspan="6">
+                                    <label for="exampleInputFile">Upload Bukti Transfer</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <p>Anda sudah upload bukti transfer, tunggu konfirmasi dari admin.</p>
+                                </td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
     @elseif($pesanan->pembayaran == 1)
-    <div class="container-fluid pt-5">
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5>Berhasil Checkout</h5>
-                <h6>Untuk pembayaran silahkan langsung sebesar: <strong>Rp.
-                        {{ number_format($pesanan->jumlah_harga) }}</strong></h6>
+        <div class="container-fluid pt-5">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5>Berhasil Checkout</h5>
+                    <h6>Untuk pembayaran silahkan langsung sebesar: <strong>Rp.
+                            {{ number_format($pesanan->jumlah_harga) }}</strong></h6>
+                </div>
             </div>
-        </div>
-        <div class="row px-xl-5">
-            <div class="container text-right">
-                <p>Tanggal Pesan: {{ $pesanan->tanggal }}</p>
-            </div>
-            <table class="table table-bordered">
-                <thread>
-                    <tr>
-                        <th class="text-center">No</th>
-                        <th class="text-center">Gambar</th>
-                        <th class="text-center">Nama Produk</th>
-                        <th class="text-center">Qty</th>
-                        <th class="text-center">Harga</th>
-                        <th class="text-center">Total Harga</th>
-                    </tr>
-                </thread>
-                <tbody>
-                    @php
-                        $no = 1;
-                    @endphp
-                    @foreach ($pesanan_detail as $row)
+            <div class="row px-xl-5">
+                <div class="container text-right">
+                    <p>Tanggal Pesan: {{ $pesanan->tanggal }}</p>
+                </div>
+                <table class="table table-bordered">
+                    <thread>
                         <tr>
-                            <td class="text-center">{{ $no++ }}</td>
-                            <td class="text-center">
-                                <img src="{{ asset('gambar/produk/' . $row->produk->gambar) }}" alt=""
-                                    style="width:50px">
-                            </td>
-                            <td>{{ $row->produk->nama_barang }}</td>
-                            <td class="text-center">{{ $row->jumlah }}</td>
-                            <td class="text-center">Rp. {{ number_format($row->produk->harga) }}</td>
-                            <td class="text-center">Rp. {{ number_format($row->jumlah_harga) }}</td>
+                            <th class="text-center">No</th>
+                            <th class="text-center">Gambar</th>
+                            <th class="text-center">Nama Produk</th>
+                            <th class="text-center">Qty</th>
+                            <th class="text-center">Harga</th>
+                            <th class="text-center">Total Harga</th>
                         </tr>
-                    @endforeach
-                    <tr>
-                        <td colspan="5" align="right"><strong>Total Harga :</strong></td>
-                        <td><strong>Rp. {{ number_format($pesanan->jumlah_harga) }}</strong></td>
-                    </tr>
-                </tbody>
-            </table>
+                    </thread>
+                    <tbody>
+                        @php
+                            $no = 1;
+                        @endphp
+                        @foreach ($pesanan_detail as $row)
+                            <tr>
+                                <td class="text-center">{{ $no++ }}</td>
+                                <td class="text-center">
+                                    <img src="{{ asset('gambar/produk/' . $row->produk->gambar) }}" alt=""
+                                        style="width:50px">
+                                </td>
+                                <td>{{ $row->produk->nama_barang }}</td>
+                                <td class="text-center">{{ $row->jumlah }}</td>
+                                <td class="text-center">Rp. {{ number_format($row->produk->harga) }}</td>
+                                <td class="text-center">Rp. {{ number_format($row->jumlah_harga) }}</td>
+                            </tr>
+                        @endforeach
+                        <tr>
+                            <td colspan="5" align="right"><strong>Total Harga :</strong></td>
+                            <td><strong>Rp. {{ number_format($pesanan->jumlah_harga) }}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
     @endif
 @endsection

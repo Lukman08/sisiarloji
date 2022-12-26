@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Produk;
 use App\Models\Pesanan;
+use PDF;
 use Illuminate\Http\Request;
 use App\Models\PesananDetail;
 use Illuminate\Support\Facades\Auth;
@@ -205,15 +206,51 @@ class TransaksiController extends Controller
     return view('pembeli.bayar.transfer.riwayatdetail', compact('pesanan', 'pesanan_detail'));
     }
 
+    public function buktitf(Request $request, $id){
+        $data = Pesanan::where('id', $id)->first();
+        $request->file('buktitf')->move('gambar/buktitf/', $request->file('buktitf')->getClientOriginalName());
+        $data->buktitf = $request->file('buktitf')->getClientOriginalName();
+        $data->save();
+        return redirect()->route('riwayat');
+    }
+
     //  admin
-    public function transaksi(){
+    public function transaksi(Request $request){
         $data = Pesanan::orderBy('id', 'ASC')->simplePaginate(5);
         return view('admin.transaksi.index', compact('data'));
     }
+
+    public function exportpdf(){
+        $data = Pesanan::all();
+        view()->share('data', $data);
+        $pdf = PDF::loadView('admin.transaksi.exportpdf', ['data' => $data])->setOptions(['defaultFont' => 'sans-serif']);
+        return $pdf->download('transaksi.pdf');
+    }
+
+    public function cekbuktitf($id){
+        $pesanan = Pesanan::where('id' , $id)->first();
+        $pesanan_detail = PesananDetail::where('pesanan_id', $pesanan->id)->get();
+        return view('admin.transaksi.pesanan', compact('pesanan', 'pesanan_detail'));
+    }
+
+    public function downloadbuktitf($id){
+        $data = Pesanan::find($id);
+        $files = $data->buktitf;
+        return response()->download(public_path('gambar/buktitf/'.$files));
+    }
+
+    public function konfirmasitf($id){
+        $data = Pesanan::where('id', $id)->first();
+        $data->status = 2;
+        $data->update();
+        return redirect()->route('transaksi');
+    }
+
     public function selesai($id){
         $data = Pesanan::where('id', $id)->first();
         $data->status = 3;
         $data->update();
         return redirect()->route('transaksi');
     }
+
 }

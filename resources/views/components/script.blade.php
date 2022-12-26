@@ -42,3 +42,11 @@
 
 <!-- Template Javascript -->
 <script src="{{ asset('template/') }}js/main.js"></script>
+
+{{-- datatable --}}
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#data').DataTable();
+    });
+</script>

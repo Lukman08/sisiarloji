@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('status');
             $table->integer('kode');
             $table->integer('jumlah_harga');
+            $table->longText('buktitf')->nullable();
             $table->timestamps();
         });
     }

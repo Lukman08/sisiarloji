@@ -29,26 +29,13 @@
                         <div class="card-body">
                             <div class="row g-2">
                                 <div class="col-md">
-                                    <a href="" class="btn btn-outline-success">
+                                    <a href="{{ route('exportpdf') }}" class="btn btn-outline-success">
                                         <i class="fa fa-file-pdf"></i>
                                     </a>
                                 </div>
                                 <div class="col-md"></div>
-                                <div class="col-md">
-                                    <form action="{{ route('transaksi') }}" method="GET">
-                                        <div class="input-group">
-                                            <input type="search" class="form-control" placeholder="Cari nama pemesan..."
-                                                name="cari">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text bg-transparent text-primary">
-                                                    <i class="fa fa-search"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
                             </div>
-                            <table class="table table-bordered table-hover">
+                            <table class="table table-bordered table-hover" id="data">
                                 <thead>
                                     <tr>
                                         <th class="text-center">No</th>
@@ -94,7 +81,7 @@
                                             </td>
                                             <td class="text-center">
                                                 @if ($row->status == 1)
-                                                    <a href="" class="btn btn-primary"><i
+                                                    <a href="{{ route('cekbuktitf', $row->id) }}" class="btn btn-primary"><i
                                                             class="fa fa-info-circle"></i></a>
                                                 @elseif ($row->status == 2)
                                                     <a href="{{ route('selesai', $row->id) }}" class="btn btn-info"><i

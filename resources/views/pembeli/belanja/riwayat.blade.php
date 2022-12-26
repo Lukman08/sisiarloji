@@ -66,11 +66,7 @@
                                     <a href="{{ url('pembeli/riwayatdetail', $row->id) }}"
                                         class="btn btn-outline-primary"><i class="fa fa-info-circle"></i></a>
                                 @elseif ($row->status == 2)
-                                    @if ($row->pembayaran == 0)
-                                        <span class="badge badge-dark">Diproses</span>
-                                    @elseif ($row->pembayaran == 1)
-                                        <a href="" class="btn btn-outline-success"><i class="fa fa-download"></i></a>
-                                    @endif
+                                    <a href="" class="btn btn-outline-info"><i class="fa fa-download"></i></a>
                                 @elseif ($row->status == 3)
                                     <a href="" class="btn btn-outline-success"><i class="fa fa-download"></i></a>
                                 @endif
