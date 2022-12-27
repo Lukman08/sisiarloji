@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Invoice #6</title>
+    <title>Invoice{{$pesanan->id}}_{{ $pesanan->tanggal}}_{{$pesanan->user->name}}</title>
 
     <style>
         html,
@@ -160,7 +160,7 @@
                 </th>
             </tr>
             <tr class="bg-blue">
-                <th class="text-center">ID</th>
+                <th class="text-center">ID Produk</th>
                 <th class="text-center">Nama</th>
                 <th class="text-center">Harga</th>
                 <th class="text-center">Qty</th>
@@ -170,7 +170,7 @@
         <tbody>
             @foreach ($pesanan_detail as $row)
             <tr>
-                <td width="10%" class="text-center">{{ $row->produk->id }}</td>
+                <td width="15%" class="text-center">{{ $row->produk->id }}</td>
                 <td>
                     {{ $row->produk->nama_barang }}
                 </td>
