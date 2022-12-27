@@ -220,6 +220,13 @@ class TransaksiController extends Controller
         return view('admin.transaksi.index', compact('data'));
     }
 
+    public function invoice($id){
+        $pesanan = Pesanan::where('id' , $id)->first();
+        $pesanan_detail = PesananDetail::where('pesanan_id', $pesanan->id)->get();
+        $pdf = PDF::loadView('pembeli.bayar.ditempat.invoice', compact('pesanan', 'pesanan_detail'));
+        return $pdf->download('Invoice'.$pesanan->id."_".$pesanan->tanggal."_".$pesanan->user->name.".pdf");
+    }
+
     public function exportpdf(){
         $data = Pesanan::all();
         view()->share('data', $data);

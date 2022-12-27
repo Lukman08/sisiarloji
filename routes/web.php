@@ -44,6 +44,7 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'hakakses:admin']],fun
 
     Route::get('/transaksi', [TransaksiController::class, 'transaksi'])->name('transaksi');
     Route::get('/exportpdf', [TransaksiController::class, 'exportpdf'])->name('exportpdf');
+    Route::get('/invoiceadmin/{id}', [TransaksiController::class, 'invoice'])->name('invoiceadmin');
     Route::get('/pesanan/{id}', [TransaksiController::class, 'cekbuktitf'])->name('cekbuktitf');
     Route::get('/downloadbuktitf/{id}', [TransaksiController::class, 'downloadbuktitf'])->name('downloadbuktitf');
     Route::get('/konfirmasitf/{id}', [TransaksiController::class, 'konfirmasitf'])->name('konfirmasitf');
@@ -63,4 +64,5 @@ Route::group(['prefix'=>'pembeli', 'middleware' => ['auth', 'hakakses:user']],fu
     Route::get('/riwayat', [TransaksiController::class, 'riwayat'])->name('riwayat');
     Route::get('/riwayatdetail/{id}', [TransaksiController::class, 'riwayatdetail'])->name('riwayatdetail');
     Route::post('/buktitf/{id}', [TransaksiController::class, 'buktitf'])->name('buktitf');
+    Route::get('/invoice/{id}', [TransaksiController::class, 'invoice'])->name('invoice');
 });

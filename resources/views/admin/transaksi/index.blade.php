@@ -87,7 +87,7 @@
                                                     <a href="{{ route('selesai', $row->id) }}" class="btn btn-info"><i
                                                             class="fa fa-check-circle"></i></a>
                                                 @elseif ($row->status == 3)
-                                                    <a href="" class="btn btn-dark"><i
+                                                    <a href="{{ route('invoiceadmin', $row->id) }}" class="btn btn-dark"><i
                                                             class="fa fa-download"></i></a>
                                                 @endif
                                             </td>
